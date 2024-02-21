@@ -4,12 +4,13 @@ import ItemIcon from "./ItemIcon";
 function CharacterSlot({ data, setData }) {
   const [character, setCharacter] = useState<string>("1213");
   const handleCharacterChange = (e) => {
-    setCharacter(e.target.value);
+    if (e.target.value.length == 4) setCharacter(e.target.value);
   };
 
   const [lightCone, setLightCone] = useState<string>("23015");
   const handleLightConeChange = (e) => {
-    setLightCone(e.target.value);
+    if (e.target.value.length == 5) setLightCone(e.target.value);
+  };
   };
 
   const save = () => {
