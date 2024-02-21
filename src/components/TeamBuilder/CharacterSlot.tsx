@@ -7,18 +7,32 @@ function CharacterSlot({ data, setData }) {
     if (e.target.value.length == 4) setCharacter(e.target.value);
   };
 
+  const [characterLevel, setCharacterLevel] = useState<number>(80);
+  const handleCharacterLevelChange = (e) => {
+    setCharacterLevel(Number(e.target.value));
+  };
+
   const [lightCone, setLightCone] = useState<string>("");
   const handleLightConeChange = (e) => {
     if (e.target.value.length == 5) setLightCone(e.target.value);
   };
+
+  const [lightConeLevel, setLightConeLevel] = useState<number>(80);
+  const handleLightConeLevelChange = (e) => {
+    setLightConeLevel(Number(e.target.value));
   };
 
   const save = () => {
     const data = {
-      character: character,
-      light_cone: lightCone,
+      character: {
+        id: character,
+        level: 80,
+      },
+      light_cone: {
+        id: lightCone,
+        level: 80,
+      },
     };
-
     setData(data);
   };
 
@@ -30,10 +44,12 @@ function CharacterSlot({ data, setData }) {
         <ItemIcon
           type="character"
           id={character}
+          level={characterLevel}
         />
         <ItemIcon
           type="light_cone"
           id={lightCone}
+          level={lightConeLevel}
         />
       </div>
 
@@ -42,14 +58,25 @@ function CharacterSlot({ data, setData }) {
         placeholder="Character ID"
         type="text"
         onChange={handleCharacterChange}
-        value={character}
       />
+      <input
+        className="border border-black"
+        placeholder="Character Level"
+        type="text"
+        onChange={handleCharacterLevelChange}
+      />
+
       <input
         className="border border-black"
         placeholder="Light Cone ID"
         type="text"
         onChange={handleLightConeChange}
-        value={lightCone}
+      />
+      <input
+        className="border border-black"
+        placeholder="Light Cone Level"
+        type="text"
+        onChange={handleLightConeLevelChange}
       />
     </div>
   );
