@@ -11,11 +11,7 @@ const notoKR = Noto_Sans_KR({ weight: "400", subsets: ["latin"] });
 export default class Lang {
   public locale: Locale;
 
-  public font: NextFont;
-  public fetchPath: string;
-  public htmlLang: string;
-
-  private getFont() {
+  public get font(): NextFont {
     switch (this.locale) {
       case "chs":
         return notoSC;
@@ -30,7 +26,7 @@ export default class Lang {
     }
   }
 
-  private getFetchPath() {
+  public get fetchPath(): string {
     switch (this.locale) {
       case "chs":
         return "cn";
@@ -41,7 +37,7 @@ export default class Lang {
     }
   }
 
-  private getHtmlLang() {
+  public get htmlLang(): string {
     switch (this.locale) {
       case "chs":
         return "zh_Hans";
@@ -74,8 +70,5 @@ export default class Lang {
 
   constructor(locale: Locale) {
     this.locale = locale;
-    this.font = this.getFont();
-    this.fetchPath = this.getFetchPath();
-    this.htmlLang = this.getHtmlLang();
   }
 }
