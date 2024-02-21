@@ -1,5 +1,5 @@
-import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import ItemIcon from "./ItemIcon";
 
 function CharacterSlot({ data, setData }) {
   const [character, setCharacter] = useState<string>("1213");
@@ -26,16 +26,13 @@ function CharacterSlot({ data, setData }) {
   return (
     <div className="flex flex-col">
       <div className="flex justify-center gap-2">
-        <Image
-          width={100}
-          height={100}
-          src={process.env.NEXT_PUBLIC_BASE_DATA_URL + `/icon/character/${character}.png`}
-          alt={character}
+        <ItemIcon
+          type="character"
+          id={character}
         />
-        <img
-          width={100}
-          height={100}
-          src={process.env.NEXT_PUBLIC_BASE_DATA_URL + `/icon/light_cone/${lightCone}.png`}
+        <ItemIcon
+          type="light_cone"
+          id={lightCone}
         />
       </div>
 
