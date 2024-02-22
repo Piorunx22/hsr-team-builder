@@ -2,25 +2,33 @@
 
 import { useEffect, useState } from "react";
 import CharacterSlot from "./CharacterSlot";
+import { ISlot, ITeam } from "@/types/TeamBuilder";
 
-function TeamRow({ team, setTeam }) {
-  const [slots, setSlots] = useState(Array(4).fill(null));
+interface TeamRowProps {
+  teamData: ITeam;
+  setTeamData: React.Dispatch<React.SetStateAction<ITeam>>;
+}
 
-  const updateSlot = (index: any, updatedSlot: any) => {
-    setSlots((prevSlots) => prevSlots.map((slot, i) => (i === index ? updatedSlot : slot)));
+function TeamRow({ teamData, setTeamData }: TeamRowProps) {
+  const [slots, setSlots] = useState<ISlot[]>(teamData.team || Array(4).fill(null));
+
+  const updateSlot = (index: number, updatedSlot: ISlot) => {
+    setSlots((prevSlots: ISlot[]) =>
+      prevSlots.map((slot, i) => (i === index ? updatedSlot : slot))
+    );
   };
 
   const saveTeamData = () => {
     setTeamData({ name: teamData.name, team: slots });
   };
 
-  const handleTeamNameChange = (e) => {
-    const updatedTeam = team;
-    updatedTeam.teamName = e.target.value;
-    setTeam(updatedTeam);
+  const handleTeamNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const updatedTeamData = teamData;
+    updatedTeamData.name = e.target.value;
+    setTeamData(updatedTeamData);
   };
 
-  useEffect(() => saveTeam(), [slots]);
+  useEffect(() => saveTeamData(), [slots]);
 
   return (
     <div>
@@ -30,7 +38,7 @@ function TeamRow({ team, setTeam }) {
         type="text"
         onChange={handleTeamNameChange}
       />
-      <span>{team.teamName}</span>
+      <span>{teamData.name}</span>
       <div className="grid grid-cols-4 justify-items-center">
         {slots.map((slot, index) => (
           <CharacterSlot
