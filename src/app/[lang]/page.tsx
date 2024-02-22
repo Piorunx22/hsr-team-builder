@@ -1,15 +1,8 @@
 "use client";
 import TeamRow from "@/components/TeamBuilder/TeamRow";
-import { Locale } from "@/i18n-config";
 import { useState } from "react";
 
-export default function Main({
-  params,
-}: {
-  params: {
-    lang: Locale;
-  };
-}) {
+export default function Main() {
   const [team, setTeam] = useState();
   return (
     <main>

@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import { DictionaryProvider } from "@/contexts/DictionaryContext";
+import { GameDataProvider } from "@/contexts/GameDataContext";
 import { Locale } from "@/i18n-config";
 import Lang from "@/models/Lang";
 import type { Metadata } from "next";
@@ -23,10 +24,12 @@ export default function RootLayout({
   return (
     <html lang={lang.htmlLang}>
       <body className={lang.font.className}>
-        <DictionaryProvider locale={lang.locale}>
-          <Header />
-          {children}
-        </DictionaryProvider>
+        <GameDataProvider locale={lang.locale}>
+          <DictionaryProvider locale={lang.locale}>
+            <Header />
+            {children}
+          </DictionaryProvider>
+        </GameDataProvider>
       </body>
     </html>
   );
