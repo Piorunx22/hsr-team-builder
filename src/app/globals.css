@@ -2,6 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+.rarity-5 {
+  background: linear-gradient(180deg, #8b554e, #c9a77c 75%);
+}
+
+.rarity-4 {
+  background: linear-gradient(180deg, #42436a 0%, #9862d5 75%);
+}
+
+.rarity-3 {
+  background: #4882c3;
+  background: linear-gradient(180deg, #3a3b64, #4882c3 75%);
+}
+
+.rarity-2 {
+  background: #438e89;
+  background: linear-gradient(180deg, #3a4b67, #438e89 75%);
+}
+
+.rarity-1 {
+  background: linear-gradient(180deg, #404251, #96969c 75%);
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
