@@ -1,4 +1,4 @@
-import "server-only";
+// import "server-only";
 import type { Locale } from "../i18n-config";
 
 const dictionaries = {
@@ -17,5 +17,6 @@ const dictionaries = {
   vi: () => import("@/lang/en.json").then((module) => module.default),
 };
 
-export const getDictionary = async (locale: Locale) => dictionaries[locale]?.() ?? dictionaries.en();
+export const getDictionary = async (locale: Locale) =>
+  dictionaries[locale]?.() ?? dictionaries.en();
 export type Dictionary = Awaited<ReturnType<typeof getDictionary>>;

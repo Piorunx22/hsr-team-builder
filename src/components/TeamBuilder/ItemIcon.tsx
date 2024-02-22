@@ -1,4 +1,5 @@
 "use client";
+import { useDictionary } from "@/contexts/DictionaryContext";
 import Image from "next/image";
 
 interface ItemIconProps {
@@ -13,6 +14,7 @@ function ItemIcon({ type, id, level }: ItemIconProps) {
       <div className="w-[100px] h-[100px] flex justify-center items-center bg-neutral-300">?</div>
     );
   }
+  const t = useDictionary();
   return (
     <div className="w-[100px] h-[100px] relative">
       <Image
@@ -22,7 +24,9 @@ function ItemIcon({ type, id, level }: ItemIconProps) {
         src={process.env.NEXT_PUBLIC_BASE_DATA_URL + `/icon/${type}/${id}.png`}
         alt={id}
       />
-      <span className="absolute top-0 left-0 backdrop-blur-sm">Lv. {level}</span>
+      <span className="absolute top-0 left-0 backdrop-blur-sm">
+        {t("common.level.short", { LEVEL: level })}
+      </span>
     </div>
   );
 }

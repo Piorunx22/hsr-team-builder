@@ -2,5 +2,12 @@
   "header": {
     "title": "HSR Team Builder",
     "dataVersion": "Data version: "
+  },
+  "common": {
+    "level": {
+      "full": "Level {LEVEL}",
+      "short": "Lv. {LEVEL}",
+      "relic": "+{LEVEL}"
+    }
   }
 }
