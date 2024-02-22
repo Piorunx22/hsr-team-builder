@@ -10,8 +10,8 @@ function TeamRow({ team, setTeam }) {
     setSlots((prevSlots) => prevSlots.map((slot, i) => (i === index ? updatedSlot : slot)));
   };
 
-  const saveTeam = () => {
-    setTeam({ teamName: team.teamName, team: slots });
+  const saveTeamData = () => {
+    setTeamData({ name: teamData.name, team: slots });
   };
 
   const handleTeamNameChange = (e) => {

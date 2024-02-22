@@ -1,26 +1,50 @@
 "use client";
 import TeamRow from "@/components/TeamBuilder/TeamRow";
-import { useState } from "react";
+import { SAMPLE_TEAM } from "@/data/sampleTeam";
+import { ITeam } from "@/types/TeamBuilder";
+import { useEffect, useState } from "react";
 
 export default function Main() {
-  const [teams, setTeams] = useState([{ teamName: "team", team: [] }]);
+  const initializeTeams = (): ITeam[] => {
+    const savedData = localStorage.getItem("data");
+    return savedData ? JSON.parse(savedData) : SAMPLE_TEAM;
+  };
+
+  const [teams, setTeams] = useState<ITeam[]>(initializeTeams);
+
+  const emptyTeam = Array(4).fill({
+    character: {
+      id: "",
+      level: 0,
+    },
+    light_cone: {
+      id: "",
+      level: 0,
+    },
+  });
 
   const addTeam = () => {
     const arr = [...teams];
-    arr.push({ teamName: "team", team: [] });
+    arr.push({ name: "team", team: emptyTeam });
     setTeams(arr);
   };
 
-  const updateTeam = (index: any, updatedTeam: any) => {
+  useEffect(() => {
+    localStorage.setItem("data", JSON.stringify(teams));
+  }, [teams]);
+
+  const updateTeam = (index: number, updatedTeam: ITeam) => {
     setTeams((prevTeams) => prevTeams.map((team, i) => (i === index ? updatedTeam : team)));
   };
+
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
     <main>
       {teams.map((team, index) => (
         <TeamRow
           key={index}
-          team={team}
-          setTeam={(updatedTeam: any) => updateTeam(index, updatedTeam)}
+          teamData={team}
+          setTeamData={(updatedTeam: any) => updateTeam(index, updatedTeam)}
         />
       ))}
       <button onClick={addTeam}>Add team</button>

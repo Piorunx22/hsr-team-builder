@@ -1,3 +1,7 @@
+# 0.2.0
+
+- Added saving to local storage
+
 ## 0.1.1
 
 - `ItemIcon` now displays rarity
