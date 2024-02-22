@@ -3,40 +3,42 @@
 import { useEffect, useState } from "react";
 import CharacterSlot from "./CharacterSlot";
 
-function TeamRow({ team, setTeam, teamIndex }) {
-  const [slot1, setSlot1] = useState();
-  const [slot2, setSlot2] = useState();
-  const [slot3, setSlot3] = useState();
-  const [slot4, setSlot4] = useState();
+function TeamRow({ team, setTeam }) {
+  const [slots, setSlots] = useState(Array(4).fill(null));
 
-  const saveTeam = () => {
-    const obj = [slot1, slot2, slot3, slot4];
-
-    setTeam({ teamName: team.teamName, team: obj });
+  const updateSlot = (index: any, updatedSlot: any) => {
+    setSlots((prevSlots) => prevSlots.map((slot, i) => (i === index ? updatedSlot : slot)));
   };
 
-  useEffect(() => saveTeam(), [slot1, slot2, slot3, slot4]);
+  const saveTeam = () => {
+    setTeam({ teamName: team.teamName, team: slots });
+  };
+
+  const handleTeamNameChange = (e) => {
+    const updatedTeam = team;
+    updatedTeam.teamName = e.target.value;
+    setTeam(updatedTeam);
+  };
+
+  useEffect(() => saveTeam(), [slots]);
 
   return (
     <div>
-      <p>{team.teamName}</p>
+      <input
+        className="border border-black"
+        placeholder="Team name"
+        type="text"
+        onChange={handleTeamNameChange}
+      />
+      <span>{team.teamName}</span>
       <div className="grid grid-cols-4 justify-items-center">
-        <CharacterSlot
-          data={slot1}
-          setData={setSlot1}
-        />
-        <CharacterSlot
-          data={slot2}
-          setData={setSlot2}
-        />
-        <CharacterSlot
-          data={slot3}
-          setData={setSlot3}
-        />
-        <CharacterSlot
-          data={slot4}
-          setData={setSlot4}
-        />
+        {slots.map((slot, index) => (
+          <CharacterSlot
+            key={index}
+            data={slot}
+            setData={(updatedSlot: any) => updateSlot(index, updatedSlot)}
+          />
+        ))}
       </div>
     </div>
   );

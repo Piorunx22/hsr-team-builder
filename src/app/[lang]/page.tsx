@@ -19,7 +19,6 @@ export default function Main() {
       {teams.map((team, index) => (
         <TeamRow
           key={index}
-          teamIndex={index}
           team={team}
           setTeam={(updatedTeam: any) => updateTeam(index, updatedTeam)}
         />

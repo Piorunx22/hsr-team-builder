@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ItemIcon from "./ItemIcon";
 
 function CharacterSlot({ data, setData }) {
-  const [character, setCharacter] = useState<string>("");
+  const [character, setCharacter] = useState<string>("1213");
   const handleCharacterChange = (e) => {
     setCharacter(e.target.value);
   };
@@ -12,7 +12,7 @@ function CharacterSlot({ data, setData }) {
     setCharacterLevel(Number(e.target.value));
   };
 
-  const [lightCone, setLightCone] = useState<string>("");
+  const [lightCone, setLightCone] = useState<string>("23015");
   const handleLightConeChange = (e) => {
     setLightCone(e.target.value);
   };
