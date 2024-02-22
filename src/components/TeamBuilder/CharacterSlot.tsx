@@ -4,7 +4,7 @@ import ItemIcon from "./ItemIcon";
 function CharacterSlot({ data, setData }) {
   const [character, setCharacter] = useState<string>("");
   const handleCharacterChange = (e) => {
-    if (e.target.value.length == 4) setCharacter(e.target.value);
+    setCharacter(e.target.value);
   };
 
   const [characterLevel, setCharacterLevel] = useState<number>(80);
@@ -14,7 +14,7 @@ function CharacterSlot({ data, setData }) {
 
   const [lightCone, setLightCone] = useState<string>("");
   const handleLightConeChange = (e) => {
-    if (e.target.value.length == 5) setLightCone(e.target.value);
+    setLightCone(e.target.value);
   };
 
   const [lightConeLevel, setLightConeLevel] = useState<number>(80);
@@ -26,17 +26,17 @@ function CharacterSlot({ data, setData }) {
     const data = {
       character: {
         id: character,
-        level: 80,
+        level: characterLevel,
       },
       light_cone: {
         id: lightCone,
-        level: 80,
+        level: lightConeLevel,
       },
     };
     setData(data);
   };
 
-  useEffect(() => save(), [character, lightCone]);
+  useEffect(() => save(), [character, characterLevel, lightCone, lightConeLevel]);
 
   return (
     <div className="flex flex-col">
