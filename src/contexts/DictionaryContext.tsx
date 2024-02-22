@@ -1,11 +1,12 @@
 "use client";
-import { getDictionary } from "@/lang/getDictionary";
-import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { Locale } from "@/i18n-config";
+import { Dictionary, getDictionary } from "@/lang/getDictionary";
+import { ReactNode, createContext, useContext, useEffect, useState } from "react";
 
-const DictionaryContext = createContext(null);
+const DictionaryContext = createContext<Dictionary | null>(null);
 
-export function DictionaryProvider({ children, locale }) {
-  const [dictionary, setDictionary] = useState(null);
+export function DictionaryProvider({ children, locale }: { children: ReactNode; locale: Locale }) {
+  const [dictionary, setDictionary] = useState<Dictionary>();
 
   useEffect(() => {
     async function fetchDictionary() {

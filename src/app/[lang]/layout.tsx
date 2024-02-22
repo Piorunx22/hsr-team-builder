@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang={lang.htmlLang}>
       <body className={lang.font.className}>
-        <DictionaryProvider locale={"en"}>
+        <DictionaryProvider locale={lang.locale}>
           <Header />
           {children}
         </DictionaryProvider>
