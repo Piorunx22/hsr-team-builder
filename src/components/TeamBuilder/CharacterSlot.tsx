@@ -1,27 +1,21 @@
 import { useEffect, useState } from "react";
 import ItemIcon from "./ItemIcon";
+import { ISlot } from "@/types/TeamBuilder";
+import SlotEditor from "./SlotEditor";
 
-function CharacterSlot({ data, setData }) {
-  //
-  const [character, setCharacter] = useState<string>(data.character.id);
-  const handleCharacterChange = (e) => {
-    setCharacter(e.target.value);
-  };
+interface CharacterSlotProps {
+  data: ISlot;
+  setData: any;
+}
 
+function CharacterSlot({ data, setData }: CharacterSlotProps) {
+  const [isEditorOpen, setIsEditorOpen] = useState<boolean>(false);
+
+  const [character, setCharacter] = useState<string | null>(data.character.id);
   const [characterLevel, setCharacterLevel] = useState<number>(data.character.level);
-  const handleCharacterLevelChange = (e) => {
-    setCharacterLevel(Number(e.target.value));
-  };
 
-  const [lightCone, setLightCone] = useState<string>(data.light_cone.id);
-  const handleLightConeChange = (e) => {
-    setLightCone(e.target.value);
-  };
-
+  const [lightCone, setLightCone] = useState<string | null>(data.light_cone.id);
   const [lightConeLevel, setLightConeLevel] = useState<number>(data.light_cone.level);
-  const handleLightConeLevelChange = (e) => {
-    setLightConeLevel(Number(e.target.value));
-  };
 
   const save = () => {
     const data = {
@@ -40,7 +34,7 @@ function CharacterSlot({ data, setData }) {
   useEffect(() => save(), [character, characterLevel, lightCone, lightConeLevel]);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-neutral-100">
       <div className="flex justify-center gap-2">
         <ItemIcon
           type="character"
@@ -53,31 +47,16 @@ function CharacterSlot({ data, setData }) {
           level={lightConeLevel}
         />
       </div>
-
-      <input
-        className="border border-black"
-        placeholder="Character ID"
-        type="text"
-        onChange={handleCharacterChange}
-      />
-      <input
-        className="border border-black"
-        placeholder="Character Level"
-        type="text"
-        onChange={handleCharacterLevelChange}
-      />
-
-      <input
-        className="border border-black"
-        placeholder="Light Cone ID"
-        type="text"
-        onChange={handleLightConeChange}
-      />
-      <input
-        className="border border-black"
-        placeholder="Light Cone Level"
-        type="text"
-        onChange={handleLightConeLevelChange}
+      <SlotEditor
+        states={{
+          character: { id: character, level: characterLevel },
+          light_cone: { id: lightCone, level: lightConeLevel },
+        }}
+        stateSetters={{
+          character: { id: setCharacter, level: setCharacterLevel },
+          light_cone: { id: setLightCone, level: setLightConeLevel },
+        }}
+        isOpen={{ value: isEditorOpen, set: setIsEditorOpen }}
       />
     </div>
   );

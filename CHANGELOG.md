@@ -1,3 +1,7 @@
+# 0.3.0
+
+- Slots are now edited by a modal instead of typing IDs
+
 # 0.2.0
 
 - Added saving to local storage

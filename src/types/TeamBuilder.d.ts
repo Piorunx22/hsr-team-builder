@@ -7,11 +7,11 @@ export interface ITeam {
 
 export interface ISlot {
   character: {
-    id: string;
+    id: string | null;
     level: number;
   };
   light_cone: {
-    id: string;
+    id: string | null;
     level: number;
   };
 }

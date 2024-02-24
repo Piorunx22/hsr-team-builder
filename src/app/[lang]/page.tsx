@@ -14,11 +14,11 @@ export default function Main() {
 
   const emptyTeam = Array(4).fill({
     character: {
-      id: "",
+      id: null,
       level: 0,
     },
     light_cone: {
-      id: "",
+      id: null,
       level: 0,
     },
   });

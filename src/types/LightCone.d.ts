@@ -2,7 +2,7 @@ export interface ILightCone {
   id: string;
   name: string;
   rarity: number;
-  path: Path;
+  path: string;
   desc: string;
   icon: string;
   preview: string;
