@@ -1,3 +1,7 @@
+## 0.3.2
+
+- Added Settings modal
+
 ## 0.3.1
 
 - Teams now have separate tabs
