@@ -1,3 +1,7 @@
+## 0.3.1
+
+- Teams now have separate tabs
+
 # 0.3.0
 
 - Slots are now edited by a modal instead of typing IDs

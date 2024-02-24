@@ -32,13 +32,14 @@ function TeamRow({ teamData, setTeamData }: TeamRowProps) {
 
   return (
     <div>
+      <p>{teamData.name}</p>
       <input
         className="border border-black"
-        placeholder="Team name"
+        placeholder="New name"
         type="text"
         onChange={handleTeamNameChange}
       />
-      <span>{teamData.name}</span>
+
       <div className="grid grid-cols-4 justify-items-center">
         {slots.map((slot, index) => (
           <CharacterSlot
