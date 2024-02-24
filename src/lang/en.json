@@ -9,5 +9,15 @@
       "short": "Lv. {LEVEL}",
       "relic": "+{LEVEL}"
     }
+  },
+  "settings": {
+    "general": {
+      "theme": {
+        "placeholder": "Select theme...",
+        "light": "Light",
+        "dark": "Dark",
+        "system": "System"
+      }
+    }
   }
 }

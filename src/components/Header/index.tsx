@@ -1,6 +1,5 @@
 "use client";
 import { useDictionary } from "@/contexts/DictionaryContext";
-import { useGameData } from "@/contexts/GameDataContext";
 import SettingsModal from "./SettingsModal";
 
 function Header() {

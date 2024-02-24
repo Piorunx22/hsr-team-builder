@@ -3,6 +3,8 @@ import { NONE, NO_NAME } from "@/lib/constants";
 import { IGameData } from "@/types/GameData";
 import { useEffect, useState } from "react";
 import ItemIcon from "../../ItemIcon";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@radix-ui/react-label";
 
 interface LightConeTabProps {
   gd: IGameData;
@@ -93,16 +95,15 @@ function LightConeTab({
               type="number"
               onChange={(e) => setLightConeLevel(Number(e.target.value))}
             />
-            <label>
-              <input
-                id="check-show-all-light-cones"
-                type="checkbox"
-                onChange={(e) => {
+            <div className="flex items-center space-x-2">
+              <Checkbox
+                id="chk-show-all-light-cones"
+                onCheckedChange={() => {
                   setShowAllLightCones(!showAllLightCones);
                 }}
               />
-              Show all light cones
-            </label>
+              <Label htmlFor="chk-show-all-light-cones">Show all light cones</Label>
+            </div>
           </>
         ) : (
           <p>Select character first</p>

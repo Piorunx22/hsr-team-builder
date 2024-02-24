@@ -1,3 +1,7 @@
+# 0.4.0
+
+- Added dark mode support
+
 ## 0.3.2
 
 - Added Settings modal

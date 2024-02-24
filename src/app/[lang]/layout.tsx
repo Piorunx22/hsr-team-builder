@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import { DictionaryProvider } from "@/contexts/DictionaryContext";
 import { GameDataProvider } from "@/contexts/GameDataContext";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 import { Locale } from "@/i18n-config";
 import Lang from "@/models/Lang";
 import type { Metadata } from "next";
@@ -24,12 +25,18 @@ export default function RootLayout({
   return (
     <html lang={lang.htmlLang}>
       <body className={lang.font.className}>
-        <GameDataProvider locale={lang.locale}>
-          <DictionaryProvider locale={lang.locale}>
-            <Header />
-            {children}
-          </DictionaryProvider>
-        </GameDataProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+        >
+          <GameDataProvider locale={lang.locale}>
+            <DictionaryProvider locale={lang.locale}>
+              <Header />
+              {children}
+            </DictionaryProvider>
+          </GameDataProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

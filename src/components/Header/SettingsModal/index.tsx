@@ -3,6 +3,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CogIcon, XIcon } from "lucide-react";
 import { useState } from "react";
 import AboutTab from "./Tabs/AboutTab";
+import GeneralTab from "./Tabs/GeneralTab";
 function SettingsModal() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
@@ -26,11 +27,13 @@ function SettingsModal() {
             />
           </DialogHeader>
           <>
-            <Tabs>
+            <Tabs defaultValue="general">
               <TabsList className="flex justify-evenly">
+                <TabsTrigger value="general">General</TabsTrigger>
                 <TabsTrigger value="about">About</TabsTrigger>
               </TabsList>
               <>
+                <GeneralTab />
                 <AboutTab />
               </>
             </Tabs>
