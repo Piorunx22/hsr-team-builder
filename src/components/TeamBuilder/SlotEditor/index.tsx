@@ -99,11 +99,11 @@ function SlotEditor({ states, stateSetters, isOpen }: SlotEditorProps) {
             "max-w-full h-full sm:h-auto sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-7x;"
           )}
         >
+          <DialogHeader>
+            <DialogTitle>{selectedCharacterID ? "Edit character" : "Add character"}</DialogTitle>
+          </DialogHeader>
           <Tabs defaultValue="character">
-            <DialogHeader className="mb-2">
-              <DialogTitle>{selectedCharacterID ? "Edit character" : "Add character"}</DialogTitle>
-            </DialogHeader>
-            <TabsList className="flex">
+            <TabsList className="flex justify-evenly">
               <TabsTrigger value="character">Character</TabsTrigger>
               <TabsTrigger value="light_cone">Light Cone</TabsTrigger>
             </TabsList>
