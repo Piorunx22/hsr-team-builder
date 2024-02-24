@@ -1,7 +1,6 @@
 {
   "header": {
-    "title": "HSR Team Builder",
-    "dataVersion": "Data version: "
+    "title": "HSR Team Builder"
   },
   "common": {
     "level": {
@@ -48,11 +47,15 @@
       },
       "delete": {
         "header": {
-          "title": "Delete data?",
+          "title": "Are you sure?",
           "description": "This will permanently delete your data.\nThis cannot be undone."
         },
         "success": "Data deleted successfully.\nThe window will reload automatically."
       }
+    },
+    "about": {
+      "appVersion": "App version: ",
+      "dataVersion": "Data version: "
     }
   }
 }

@@ -7,9 +7,15 @@ function AboutTab() {
   const gd = useGameData();
   return (
     <TabsContent value="about">
-      <div>
-        {t("header.dataVersion")}
-        <b>{gd.version}</b>
+      <div className="text-neutral-500 flex justify-between">
+        <div>
+          {t("settings.about.appVersion")}
+          <b>{process.env.APP_VERSION}</b>
+        </div>
+        <div>
+          {t("settings.about.dataVersion")}
+          <b>{gd.version}</b>
+        </div>
       </div>
     </TabsContent>
   );

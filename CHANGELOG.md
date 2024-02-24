@@ -1,3 +1,9 @@
+## 0.5.1
+
+- `AboutTab` is now showing app and data version
+- `CharacterSlot` edit button now has a dark variant
+- Minor localization changes
+
 # 0.5.0
 
 - Added data backup
