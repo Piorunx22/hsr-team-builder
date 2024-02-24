@@ -1,5 +1,10 @@
+import packageJSON from "./package.json" assert { type: "json" };
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
+  env: {
+    APP_VERSION: packageJSON.version,
+  },
   images: {
     remotePatterns: [
       {

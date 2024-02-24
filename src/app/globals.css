@@ -24,6 +24,10 @@
   background: linear-gradient(180deg, #404251, #96969c 75%);
 }
 
+* {
+  white-space: pre-wrap;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;

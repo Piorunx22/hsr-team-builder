@@ -8,15 +8,50 @@
       "full": "Level {LEVEL}",
       "short": "Lv. {LEVEL}",
       "relic": "+{LEVEL}"
-    }
+    },
+    "cancel": "Cancel",
+    "delete": "Delete"
   },
   "settings": {
+    "tab": {
+      "general": "General",
+      "data": "Import / Export",
+      "about": "About"
+    },
     "general": {
       "theme": {
         "placeholder": "Select theme...",
         "light": "Light",
         "dark": "Dark",
         "system": "System"
+      }
+    },
+    "data": {
+      "button": {
+        "export": "Export data",
+        "import": "Import from file",
+        "delete": "Delete data"
+      },
+      "export": {
+        "error": {
+          "generic": "Could not export data"
+        },
+        "success": "Data exported successfully"
+      },
+      "import": {
+        "error": {
+          "generic": "Could not import data",
+          "nofile": "No file select",
+          "invalid": "The selected file is not valid"
+        },
+        "success": "Data imported successfully.\nThe window will reload automatically."
+      },
+      "delete": {
+        "header": {
+          "title": "Delete data?",
+          "description": "This will permanently delete your data.\nThis cannot be undone."
+        },
+        "success": "Data deleted successfully.\nThe window will reload automatically."
       }
     }
   }

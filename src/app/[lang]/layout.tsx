@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import { Locale } from "@/i18n-config";
 import Lang from "@/models/Lang";
 import type { Metadata } from "next";
+import { Toaster } from "@/components/ui/sonner";
 import "../globals.css";
 
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang={lang.htmlLang}>
       <body className={lang.font.className}>
+        {/* ThemeProvider causes Warning: Extra attributes from the server: class,style at html  */}
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -34,6 +36,7 @@ export default function RootLayout({
             <DictionaryProvider locale={lang.locale}>
               <Header />
               {children}
+              <Toaster richColors />
             </DictionaryProvider>
           </GameDataProvider>
         </ThemeProvider>

@@ -1,3 +1,8 @@
+# 0.5.0
+
+- Added data backup
+- Added data delete
+
 # 0.4.0
 
 - Added dark mode support
