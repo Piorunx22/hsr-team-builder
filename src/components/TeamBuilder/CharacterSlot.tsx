@@ -34,7 +34,7 @@ function CharacterSlot({ data, setData }: CharacterSlotProps) {
   useEffect(() => save(), [character, characterLevel, lightCone, lightConeLevel]);
 
   return (
-    <div className="flex flex-col bg-neutral-100 dark:bg-neutral-900">
+    <div className="flex flex-col bg-secondary">
       <div className="flex justify-center gap-2">
         <ItemIcon
           type="character"
