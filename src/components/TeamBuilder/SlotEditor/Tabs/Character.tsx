@@ -1,23 +1,16 @@
 import { TabsContent } from "@/components/ui/tabs";
-import ItemIcon from "../../ItemIcon";
 import { NONE, NO_NAME } from "@/lib/constants";
 import { IGameData } from "@/types/GameData";
+import { ISlot } from "@/types/TeamBuilder";
 import { useEffect, useState } from "react";
+import ItemIcon from "../../ItemIcon";
 
 interface CharacterTabProps {
   gd: IGameData;
-  selectedCharacterID: string | null;
-  setSelectedCharacterID: React.Dispatch<React.SetStateAction<string | null>>;
-  characterLevel: number;
-  setCharacterLevel: React.Dispatch<React.SetStateAction<number>>;
+  data: ISlot;
+  setData: React.Dispatch<React.SetStateAction<ISlot>>;
 }
-function CharacterTab({
-  gd,
-  selectedCharacterID,
-  setSelectedCharacterID,
-  characterLevel,
-  setCharacterLevel,
-}: CharacterTabProps) {
+function CharacterTab({ gd, data, setData }: CharacterTabProps) {
   function getCharacterOptions(gameData: IGameData) {
     const options = [
       ...Object.values(gameData.characters)
@@ -47,11 +40,16 @@ function CharacterTab({
       <div className="flex flex-col">
         <ItemIcon
           type="character"
-          id={selectedCharacterID}
+          id={data.character.id}
         />
         <select
-          value={selectedCharacterID || NONE}
-          onChange={(e) => setSelectedCharacterID(e.target.value == NONE ? null : e.target.value)}
+          value={data.character.id || NONE}
+          onChange={(e) => {
+            setData({
+              ...data,
+              character: { ...data.character, id: e.target.value == NONE ? null : e.target.value },
+            });
+          }}
         >
           {characterOptions.map((character) => (
             <option
@@ -63,9 +61,14 @@ function CharacterTab({
           ))}
         </select>
         <input
-          value={characterLevel || undefined}
+          value={data.character.level || undefined}
           type="number"
-          onChange={(e) => setCharacterLevel(Number(e.target.value))}
+          onChange={(e) => {
+            setData({
+              ...data,
+              character: { ...data.character, level: Number(e.target.value) },
+            });
+          }}
         />
       </div>
     </TabsContent>

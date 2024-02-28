@@ -5,24 +5,15 @@ import { useEffect, useState } from "react";
 import ItemIcon from "../../ItemIcon";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@radix-ui/react-label";
+import { ISlot } from "@/types/TeamBuilder";
 
 interface LightConeTabProps {
   gd: IGameData;
-  selectedCharacterID: string | null;
-  selectedLightConeID: string | null;
-  setSelectedLightConeID: React.Dispatch<React.SetStateAction<string | null>>;
-  lightConeLevel: number;
-  setLightConeLevel: React.Dispatch<React.SetStateAction<number>>;
+  data: ISlot;
+  setData: React.Dispatch<React.SetStateAction<ISlot>>;
 }
 
-function LightConeTab({
-  gd,
-  selectedCharacterID,
-  selectedLightConeID,
-  setSelectedLightConeID,
-  lightConeLevel,
-  setLightConeLevel,
-}: LightConeTabProps) {
+function LightConeTab({ gd, data, setData }: LightConeTabProps) {
   const [lightConeOptions, setLightConeOptions] = useState<
     | {
         name: string;
@@ -34,7 +25,7 @@ function LightConeTab({
   const [showAllLightCones, setShowAllLightCones] = useState<boolean>(false);
 
   const path =
-    Object.values(gd.characters).find((character) => character.id === selectedCharacterID)?.path ||
+    Object.values(gd.characters).find((character) => character.id === data.character.id)?.path ||
     NONE;
 
   function getLightConeOptions(gameData: IGameData, path: string) {
@@ -61,10 +52,10 @@ function LightConeTab({
   useEffect(() => {
     getLightConeOptions(gd, path);
     const selectedPath = Object.values(gd.light_cones).find(
-      (light_cone) => light_cone.id === selectedLightConeID
+      (light_cone) => light_cone.id === data.light_cone.id
     )?.path;
-    if (selectedPath != path) setSelectedLightConeID(null);
-  }, [selectedCharacterID, showAllLightCones]);
+    if (selectedPath != path) setData({ ...data, light_cone: { ...data.light_cone, id: null } });
+  }, [data.character.id, showAllLightCones]);
 
   return (
     <TabsContent value="light_cone">
@@ -73,13 +64,19 @@ function LightConeTab({
           <>
             <ItemIcon
               type="light_cone"
-              id={selectedLightConeID}
+              id={data.light_cone.id}
             />
             <select
-              value={selectedLightConeID || NO_NAME}
-              onChange={(e) =>
-                setSelectedLightConeID(e.target.value == NONE ? null : e.target.value)
-              }
+              value={data.light_cone.id || NO_NAME}
+              onChange={(e) => {
+                setData({
+                  ...data,
+                  light_cone: {
+                    ...data.light_cone,
+                    id: e.target.value == NONE ? null : e.target.value,
+                  },
+                });
+              }}
             >
               {lightConeOptions.map((light_cone) => (
                 <option
@@ -91,9 +88,14 @@ function LightConeTab({
               ))}
             </select>
             <input
-              value={lightConeLevel || undefined}
+              value={data.light_cone.level || undefined}
               type="number"
-              onChange={(e) => setLightConeLevel(Number(e.target.value))}
+              onChange={(e) => {
+                setData({
+                  ...data,
+                  light_cone: { ...data.light_cone, level: Number(e.target.value) },
+                });
+              }}
             />
             <div className="flex items-center space-x-2">
               <Checkbox

@@ -5,57 +5,33 @@ import SlotEditor from "./SlotEditor";
 
 interface CharacterSlotProps {
   data: ISlot;
-  setData: any;
+  setData: React.Dispatch<React.SetStateAction<ISlot>>;
 }
 
 function CharacterSlot({ data, setData }: CharacterSlotProps) {
   const [isEditorOpen, setIsEditorOpen] = useState<boolean>(false);
 
-  const [character, setCharacter] = useState<string | null>(data.character.id);
-  const [characterLevel, setCharacterLevel] = useState<number>(data.character.level);
-
-  const [lightCone, setLightCone] = useState<string | null>(data.light_cone.id);
-  const [lightConeLevel, setLightConeLevel] = useState<number>(data.light_cone.level);
-
-  const save = () => {
-    const data = {
-      character: {
-        id: character,
-        level: characterLevel,
-      },
-      light_cone: {
-        id: lightCone,
-        level: lightConeLevel,
-      },
-    };
+  useEffect(() => {
     setData(data);
-  };
-
-  useEffect(() => save(), [character, characterLevel, lightCone, lightConeLevel]);
+  }, [data]);
 
   return (
     <div className="flex flex-col bg-secondary">
       <div className="flex justify-center gap-2">
         <ItemIcon
           type="character"
-          id={character}
-          level={characterLevel}
+          id={data.character.id}
+          level={data.character.level}
         />
         <ItemIcon
           type="light_cone"
-          id={lightCone}
-          level={lightConeLevel}
+          id={data.light_cone.id}
+          level={data.light_cone.level}
         />
       </div>
       <SlotEditor
-        states={{
-          character: { id: character, level: characterLevel },
-          light_cone: { id: lightCone, level: lightConeLevel },
-        }}
-        stateSetters={{
-          character: { id: setCharacter, level: setCharacterLevel },
-          light_cone: { id: setLightCone, level: setLightConeLevel },
-        }}
+        data={data}
+        setData={setData}
         isOpen={{ value: isEditorOpen, set: setIsEditorOpen }}
       />
     </div>
