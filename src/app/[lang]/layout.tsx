@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import { Locale } from "@/i18n-config";
 import Lang from "@/models/Lang";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import "../globals.css";
 
@@ -28,6 +29,7 @@ export default function RootLayout({
     <html lang={lang.htmlLang}>
       <body className={lang.font.className}>
         <Analytics />
+        <SpeedInsights />
         {/* ThemeProvider causes Warning: Extra attributes from the server: class,style at html  */}
         <ThemeProvider
           attribute="class"
