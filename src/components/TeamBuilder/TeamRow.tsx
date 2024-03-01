@@ -40,7 +40,7 @@ function TeamRow({ teamData, setTeamData }: TeamRowProps) {
         onChange={handleTeamNameChange}
       />
 
-      <div className="grid grid-cols-4 justify-items-center">
+      <div className="grid grid-cols-1 justify-items-center gap-y-4 md:grid-cols-2 lg:grid-cols-4">
         {slots.map((slot, index) => (
           <CharacterSlot
             key={index}
