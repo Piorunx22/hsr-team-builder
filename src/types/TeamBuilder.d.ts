@@ -1,4 +1,5 @@
 export interface ITeam {
+  id: string;
   name: string;
   team: ISlot[];
 }

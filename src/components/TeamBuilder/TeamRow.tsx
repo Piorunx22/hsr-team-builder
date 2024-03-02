@@ -19,7 +19,7 @@ function TeamRow({ teamData, setTeamData }: TeamRowProps) {
   };
 
   const saveTeamData = () => {
-    setTeamData({ name: teamData.name, team: slots });
+    setTeamData({ id: teamData.id, name: teamData.name, team: slots });
   };
 
   const handleTeamNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {

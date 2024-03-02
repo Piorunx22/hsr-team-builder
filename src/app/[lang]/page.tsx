@@ -3,13 +3,16 @@ import TeamRow from "@/components/TeamBuilder/TeamRow";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { EMPTY_TEAM, SAMPLE_TEAM } from "@/data/sampleTeam";
 import { ITeam } from "@/types/TeamBuilder";
-import { PlusCircle } from "lucide-react";
+import { PlusCircle, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { randomBytes } from "crypto";
 
 export default function Main() {
   const initializeTeams = (): ITeam[] => {
     const savedData = localStorage.getItem("data");
-    return savedData ? JSON.parse(savedData) : [{ name: "Team 1", team: SAMPLE_TEAM }];
+    return savedData
+      ? JSON.parse(savedData)
+      : [{ id: randomBytes(20).toString("hex"), name: "Team 1", team: SAMPLE_TEAM }];
   };
 
   const [teams, setTeams] = useState<ITeam[]>(initializeTeams);
@@ -17,7 +20,18 @@ export default function Main() {
   const addTeam = () => {
     const arr = [...teams];
     const teamCount = teams.length;
-    arr.push({ name: `Team ${teamCount + 1}`, team: EMPTY_TEAM });
+    arr.push({
+      id: randomBytes(20).toString("hex"),
+      name: `Team ${teamCount + 1}`,
+      team: EMPTY_TEAM,
+    });
+    setTeams(arr);
+  };
+
+  const deleteTeam = (uuid: string) => {
+    const arr = [...teams];
+    const index = arr.findIndex((team) => team.id == uuid);
+    arr.splice(index, 1);
     setTeams(arr);
   };
 
@@ -35,26 +49,30 @@ export default function Main() {
         <TabsList>
           {teams.map((team, index) => (
             <TabsTrigger
+              className="flex items-center justify-center gap-1"
               key={index}
-              value={String(index)}
-            >
-              {team.name}
+              value={String(index)}>
+              <span>{team.name}</span>
+
+              <Trash2
+                className=""
+                size={15}
+                onClick={() => deleteTeam(team.id)}
+              />
             </TabsTrigger>
           ))}
           <button
             value="btn-add-team"
             id="btn-add-team"
-            className="inline-flex items-center justify-center rounded-sm px-3 py-1.5 ms-1 hover:bg-background hover:text-foreground hover:shadow-sm ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
-            onClick={addTeam}
-          >
+            className="ms-1 inline-flex items-center justify-center rounded-sm px-3 py-1.5 ring-offset-background transition-all hover:bg-background hover:text-foreground hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+            onClick={addTeam}>
             <PlusCircle size={20} />
           </button>
         </TabsList>
         {teams.map((team, index) => (
           <TabsContent
             key={index}
-            value={String(index)}
-          >
+            value={String(index)}>
             <TeamRow
               teamData={team}
               setTeamData={(updatedTeam: any) => updateTeam(index, updatedTeam)}
