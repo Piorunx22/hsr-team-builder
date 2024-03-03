@@ -34,7 +34,18 @@ export default function Main() {
     const arr = [...teams];
     const index = arr.findIndex((team) => team.id == uuid);
     arr.splice(index, 1);
-    setTeams(arr);
+
+    if (index === currentTab && index !== 0) {
+      setCurrentTab(index - 1);
+    } else if (index < currentTab) {
+      setCurrentTab(currentTab - 1);
+    }
+
+    if (arr.length == 0) {
+      setTeams([{ id: randomBytes(20).toString("hex"), name: "Team 1", team: EMPTY_TEAM }]);
+    } else {
+      setTeams(arr);
+    }
   };
 
   useEffect(() => {
@@ -60,7 +71,10 @@ export default function Main() {
               <Trash2
                 className=""
                 size={15}
-                onClick={() => deleteTeam(team.id)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  deleteTeam(team.id);
+                }}
               />
             </TabsTrigger>
           ))}
