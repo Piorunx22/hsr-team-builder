@@ -27,6 +27,7 @@ export default function Main() {
       team: EMPTY_TEAM,
     });
     setTeams(arr);
+    setCurrentTab(arr.length - 1);
   };
 
   const deleteTeam = (uuid: string) => {
