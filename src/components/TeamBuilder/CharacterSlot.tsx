@@ -11,10 +11,6 @@ interface CharacterSlotProps {
 function CharacterSlot({ data, setData }: CharacterSlotProps) {
   const [isEditorOpen, setIsEditorOpen] = useState<boolean>(false);
 
-  useEffect(() => {
-    setData(data);
-  }, [data]);
-
   return (
     <div className="flex flex-col bg-secondary">
       <div className="flex justify-center gap-2">

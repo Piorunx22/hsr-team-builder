@@ -10,25 +10,15 @@ interface TeamRowProps {
 }
 
 function TeamRow({ teamData, setTeamData }: TeamRowProps) {
-  const [slots, setSlots] = useState<ISlot[]>(teamData.team || Array(4).fill(null));
-
   const updateSlot = (index: number, updatedSlot: ISlot) => {
-    setSlots((prevSlots: ISlot[]) =>
-      prevSlots.map((slot, i) => (i === index ? updatedSlot : slot))
-    );
-  };
-
-  const saveTeamData = () => {
-    setTeamData({ id: teamData.id, name: teamData.name, team: slots });
+    const newTeamData = teamData.team;
+    newTeamData[index] = updatedSlot;
+    setTeamData({ ...teamData, team: newTeamData });
   };
 
   const handleTeamNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const updatedTeamData = teamData;
-    updatedTeamData.name = e.target.value;
-    setTeamData(updatedTeamData);
+    setTeamData({ ...teamData, name: e.target.value });
   };
-
-  useEffect(() => saveTeamData(), [slots]);
 
   return (
     <div>
@@ -41,7 +31,7 @@ function TeamRow({ teamData, setTeamData }: TeamRowProps) {
       />
 
       <div className="grid grid-cols-1 justify-items-center gap-y-4 md:grid-cols-2 lg:grid-cols-4">
-        {slots.map((slot, index) => (
+        {teamData.team.map((slot, index) => (
           <CharacterSlot
             key={index}
             data={slot}
