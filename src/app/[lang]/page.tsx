@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { randomBytes } from "crypto";
 
 export default function Main() {
+  const [currentTab, setCurrentTab] = useState(0);
   const initializeTeams = (): ITeam[] => {
     const savedData = localStorage.getItem("data");
     return savedData
@@ -45,10 +46,11 @@ export default function Main() {
 
   return (
     <main>
-      <Tabs defaultValue="0">
+      <Tabs value={String(currentTab)}>
         <TabsList>
           {teams.map((team, index) => (
             <TabsTrigger
+              onClick={() => setCurrentTab(index)}
               className="flex items-center justify-center gap-1"
               key={index}
               value={String(index)}>
