@@ -15,19 +15,6 @@ function ItemIcon({ type, id, level, size = 100 }: ItemIconProps) {
   const gameData = useGameData();
   let item;
 
-  // if (!height) {
-  //   if (width) height = width;
-  //   else height = 100;
-  // }
-
-  // if (!width) {
-  //   if (height) width = height;
-  //   else width = 100;
-  // }
-
-  // height ?? (width ? (height = width) : (height = 100));
-  // width ?? (height ? (width = height) : (width = 100));
-
   if (id && ((type == "character" && id.length == 4) || (type == "light_cone" && id.length == 5))) {
     item = gameData[`${type}s`][id];
   }
