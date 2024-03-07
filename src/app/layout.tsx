@@ -3,8 +3,6 @@ import { Toaster } from "@/components/ui/sonner";
 import { DictionaryProvider } from "@/contexts/DictionaryContext";
 import { GameDataProvider } from "@/contexts/GameDataContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
-import { Locale } from "@/i18n-config";
-import Lang from "@/models/Lang";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";

@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import CharacterSlot from "./CharacterSlot";
 import { ISlot, ITeam } from "@/types/TeamBuilder";
+import CharacterSlot from "./CharacterSlot";
 
 interface TeamRowProps {
   teamData: ITeam;

@@ -3,9 +3,9 @@ import TeamRow from "@/components/TeamBuilder/TeamRow";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { EMPTY_TEAM, SAMPLE_TEAM } from "@/data/sampleTeam";
 import { ITeam } from "@/types/TeamBuilder";
+import { randomBytes } from "crypto";
 import { PlusCircle, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { randomBytes } from "crypto";
 
 export default function Main() {
   const [currentTab, setCurrentTab] = useState(0);

@@ -1,12 +1,12 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import Modal from "@/components/Modal";
+import { DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useDictionary } from "@/contexts/DictionaryContext";
-import { CogIcon, XIcon } from "lucide-react";
+import { CogIcon } from "lucide-react";
 import { useState } from "react";
 import AboutTab from "./Tabs/AboutTab";
 import DataTab from "./Tabs/DataTab";
 import GeneralTab from "./Tabs/GeneralTab";
-import Modal from "@/components/Modal";
 function SettingsModal() {
   const t = useDictionary();
 

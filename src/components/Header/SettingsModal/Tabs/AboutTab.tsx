@@ -7,7 +7,7 @@ function AboutTab() {
   const gd = useGameData();
   return (
     <TabsContent value="about">
-      <div className="text-neutral-500 flex justify-between">
+      <div className="flex justify-between text-neutral-500">
         <div>
           {t("settings.about.appVersion")}
           <b>{process.env.APP_VERSION}</b>

@@ -23,7 +23,7 @@ function ItemIcon({ type, id, level, size = 100 }: ItemIconProps) {
     return (
       <div
         style={{ width: size, height: size }}
-        className={`flex justify-center items-center bg-neutral-300`}
+        className={`flex items-center justify-center bg-neutral-300`}
       >
         ?
       </div>
@@ -45,7 +45,7 @@ function ItemIcon({ type, id, level, size = 100 }: ItemIconProps) {
         alt={id}
       />
       {level ? (
-        <span className="absolute top-0 left-0 backdrop-blur-sm">
+        <span className="absolute left-0 top-0 backdrop-blur-sm">
           {t("common.level.short", { LEVEL: String(level) })}
         </span>
       ) : null}

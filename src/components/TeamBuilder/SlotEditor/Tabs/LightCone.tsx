@@ -1,11 +1,11 @@
+import { Checkbox } from "@/components/ui/checkbox";
 import { TabsContent } from "@/components/ui/tabs";
 import { NONE, NO_NAME } from "@/lib/constants";
 import { IGameData } from "@/types/GameData";
+import { ISlot } from "@/types/TeamBuilder";
+import { Label } from "@radix-ui/react-label";
 import { useEffect, useState } from "react";
 import ItemIcon from "../../ItemIcon";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@radix-ui/react-label";
-import { ISlot } from "@/types/TeamBuilder";
 
 interface LightConeTabProps {
   gd: IGameData;

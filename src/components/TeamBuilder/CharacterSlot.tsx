@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import ItemIcon from "./ItemIcon";
 import { ISlot } from "@/types/TeamBuilder";
+import { useState } from "react";
+import ItemIcon from "./ItemIcon";
 import SlotEditor from "./SlotEditor";
 
 interface CharacterSlotProps {

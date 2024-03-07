@@ -93,7 +93,7 @@ function SlotEditor({ data, setData, isOpen }: SlotEditorProps) {
             e.preventDefault();
           }}
           className={cn(
-            "max-w-full h-full sm:h-auto sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-7x;"
+            "xl:max-w-7x; h-full max-w-full sm:h-auto sm:max-w-xl md:max-w-3xl lg:max-w-5xl"
           )}
         >
           <DialogHeader>
