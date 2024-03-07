@@ -65,7 +65,8 @@ export default function Main() {
               onClick={() => setCurrentTab(index)}
               className="flex items-center justify-center gap-1"
               key={index}
-              value={String(index)}>
+              value={String(index)}
+            >
               <span>{team.name}</span>
 
               <Trash2
@@ -82,14 +83,16 @@ export default function Main() {
             value="btn-add-team"
             id="btn-add-team"
             className="ms-1 inline-flex items-center justify-center rounded-sm px-3 py-1.5 ring-offset-background transition-all hover:bg-background hover:text-foreground hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
-            onClick={addTeam}>
+            onClick={addTeam}
+          >
             <PlusCircle size={20} />
           </button>
         </TabsList>
         {teams.map((team, index) => (
           <TabsContent
             key={index}
-            value={String(index)}>
+            value={String(index)}
+          >
             <TeamRow
               teamData={team}
               setTeamData={(updatedTeam: any) => updateTeam(index, updatedTeam)}

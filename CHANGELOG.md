@@ -1,3 +1,10 @@
+# 0.6.0
+
+- Added ability to delete teams
+- Newly added tabs now open on add
+- Localization now doesn't require path
+- Language settings persist between sessions
+
 ## 0.5.1
 
 - `AboutTab` is now showing app and data version

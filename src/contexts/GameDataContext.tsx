@@ -7,11 +7,12 @@ import { ReactNode, createContext, useContext, useEffect, useState } from "react
 
 const GameDataContext = createContext<IGameData | null>(null);
 
-export function GameDataProvider({ children, locale }: { children: ReactNode; locale: Locale }) {
+export function GameDataProvider({ children }: { children: ReactNode }) {
   const [gameData, setGameData] = useState<IGameData>();
 
   useEffect(() => {
     async function fetchGameData() {
+      const locale: Locale = (localStorage.getItem("lang") as Locale) || "en";
       const data = await client_getGameData(locale);
       setGameData(data);
     }

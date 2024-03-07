@@ -6,16 +6,22 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { TabsContent } from "@/components/ui/tabs";
-import { useDictionary } from "@/contexts/DictionaryContext";
+import { DictionaryContext, useDictionary } from "@/contexts/DictionaryContext";
+import { Locale } from "@/i18n-config";
 import { Label } from "@radix-ui/react-label";
 import { useTheme } from "next-themes";
+import { useContext } from "react";
 
 function GeneralTab() {
   const { theme, setTheme } = useTheme();
+  const { changeLang } = useContext(DictionaryContext);
   const t = useDictionary();
-  const locale = window.location.pathname.slice(1);
-  const setLanguage = (lang: string) => {
-    window.location.pathname = `${lang}`;
+
+  const locale = localStorage.getItem("lang") || "en";
+  const setLanguage = (lang: Locale) => {
+    changeLang(lang);
+    // required for new game data to load
+    window.location.reload();
   };
 
   return (
@@ -41,7 +47,7 @@ function GeneralTab() {
           <Label htmlFor="select-language">Language</Label>
           <Select
             defaultValue={locale}
-            onValueChange={(e) => setLanguage(e)}
+            onValueChange={(e) => setLanguage(e as Locale)}
           >
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder={locale} />

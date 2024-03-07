@@ -8,7 +8,7 @@ import Lang from "@/models/Lang";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-import "../globals.css";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "HSR Team Builder",
@@ -17,17 +17,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  params,
 }: Readonly<{
   children: React.ReactNode;
-  params: {
-    lang: Locale;
-  };
 }>) {
-  const lang = new Lang(params.lang);
   return (
-    <html lang={lang.htmlLang}>
-      <body className={lang.font.className}>
+    <html>
+      <body>
         <Analytics />
         <SpeedInsights />
         {/* ThemeProvider causes Warning: Extra attributes from the server: class,style at html  */}
@@ -36,8 +31,8 @@ export default function RootLayout({
           defaultTheme="light"
           enableSystem
         >
-          <GameDataProvider locale={lang.locale}>
-            <DictionaryProvider locale={lang.locale}>
+          <GameDataProvider>
+            <DictionaryProvider>
               <Header />
               {children}
               <Toaster richColors />
