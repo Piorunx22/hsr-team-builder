@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans+SC:wght@100..900&family=Noto+Sans+TC:wght@100..900&family=Noto+Sans+Thai:wght@100..900&display=swap");
+
 .rarity-5 {
   background: linear-gradient(180deg, #8b554e, #c9a77c 75%);
 }
@@ -22,6 +24,38 @@
 
 .rarity-1 {
   background: linear-gradient(180deg, #404251, #96969c 75%);
+}
+
+html:lang(zh_Hans) {
+  font-family:
+    system-ui,
+    -apple-system,
+    "Noto Sans SC",
+    sans-serif;
+}
+
+html:lang(zh_Hant) {
+  font-family:
+    system-ui,
+    -apple-system,
+    "Noto Sans TC",
+    sans-serif;
+}
+
+html:lang(ja_JP) {
+  font-family:
+    system-ui,
+    -apple-system,
+    "Noto Sans JP",
+    sans-serif;
+}
+
+html:lang(ko_KR) {
+  font-family:
+    system-ui,
+    -apple-system,
+    "Noto Sans KR",
+    sans-serif;
 }
 
 * {
@@ -106,3 +140,4 @@ input::-webkit-inner-spin-button {
     @apply bg-background text-foreground;
   }
 }
+

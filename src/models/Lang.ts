@@ -1,30 +1,7 @@
 import { Locale } from "@/i18n-config";
-import { NextFont } from "next/dist/compiled/@next/font";
-import { Inter, Noto_Sans_JP, Noto_Sans_KR, Noto_Sans_SC, Noto_Sans_TC } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
-const notoJP = Noto_Sans_JP({ weight: "400", subsets: ["latin"] });
-const notoSC = Noto_Sans_SC({ weight: "400", subsets: ["latin"] });
-const notoTC = Noto_Sans_TC({ weight: "400", subsets: ["latin"] });
-const notoKR = Noto_Sans_KR({ weight: "400", subsets: ["latin"] });
 
 export default class Lang {
   public locale: Locale;
-
-  public get font(): NextFont {
-    switch (this.locale) {
-      case "chs":
-        return notoSC;
-      case "cht":
-        return notoTC;
-      case "jp":
-        return notoJP;
-      case "kr":
-        return notoKR;
-      default:
-        return inter;
-    }
-  }
 
   public get fetchPath(): string {
     switch (this.locale) {
