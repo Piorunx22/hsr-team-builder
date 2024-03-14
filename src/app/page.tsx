@@ -100,7 +100,9 @@ export default function Main() {
           </TabsContent>
         ))}
       </Tabs>
-      {process.env.NODE_ENV == "development" && <pre>{JSON.stringify(teams, null, 2)}</pre>}
+      {process.env.NODE_ENV == "development" && (
+        <pre className="font-mono font-medium">{JSON.stringify(teams, null, 2)}</pre>
+      )}
     </main>
   );
 }

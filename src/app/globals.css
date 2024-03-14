@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans+SC:wght@100..900&family=Noto+Sans+TC:wght@100..900&family=Noto+Sans+Thai:wght@100..900&display=swap");
+@font-face {
+  font-family: "DIN";
+  src: url("/fonts/din-webfont.woff2") format("woff2");
+}
 
 .rarity-5 {
   background: linear-gradient(180deg, #8b554e, #c9a77c 75%);
@@ -56,6 +60,15 @@ html:lang(ko_KR) {
     -apple-system,
     "Noto Sans KR",
     sans-serif;
+}
+
+html {
+  font-family:
+    "DIN",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  font-weight: 600;
 }
 
 * {
